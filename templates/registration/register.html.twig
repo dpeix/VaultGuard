@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription - VaultGuard{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h1 class="h3 mb-4 text-center fw-bold">Créer un compte</h1>
+                    <p class="text-muted text-center small mb-4">VaultGuard — gestionnaire de mots de passe sécurisé</p>
+
+                    {% if form_errors(registrationForm) %}
+                        <div class="alert alert-danger py-2 small">
+                            {{ form_errors(registrationForm) }}
+                        </div>
+                    {% endif %}
+
+                    {{ form_start(registrationForm, { attr: { class: 'needs-validation' } }) }}
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.email) }}
+                            {{ form_widget(registrationForm.email, { attr: { class: 'form-control' } }) }}
+                            {{ form_errors(registrationForm.email) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.plainPassword, null, { label: 'Mot de passe' }) }}
+                            {{ form_widget(registrationForm.plainPassword, { attr: { class: 'form-control' } }) }}
+                            {{ form_errors(registrationForm.plainPassword) }}
+                        </div>
+                        <div class="mb-4">
+                            <div class="form-check">
+                                {{ form_widget(registrationForm.agreeTerms, { attr: { class: 'form-check-input' } }) }}
+                                {{ form_label(registrationForm.agreeTerms, null, { label_attr: { class: 'form-check-label' } }) }}
+                            </div>
+                            {{ form_errors(registrationForm.agreeTerms) }}
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
+                    {{ form_end(registrationForm) }}
+
+                    <p class="text-center mt-4 mb-0 small">
+                        Déjà un compte ? <a href="{{ path('app_login') }}">Se connecter</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

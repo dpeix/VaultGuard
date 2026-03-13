@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - VaultGuard{% endblock %}
+
+{% block body %}
+<div class="container-fluid py-4" data-controller="home">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <input type="search" class="form-control form-control-lg w-100 w-md-auto" style="max-width: 400px;" placeholder="Rechercher dans vos secrets…" aria-label="Recherche">
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3" data-home-target="grid">
+        {% for card in placeholderCards %}
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <article class="vg-card card h-100 {{ card.color }}">
+                    <div class="card-body">
+                        <h2 class="vg-card-title card-title mb-2">{{ card.title }}</h2>
+                        <p class="vg-card-body card-text mb-0">{{ card.body }}</p>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
